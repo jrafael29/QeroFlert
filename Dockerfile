@@ -5,4 +5,4 @@ WORKDIR /app
 
 RUN npm install 
 
-CMD [ "node", "server.js" ]
+CMD [ "node", "server.js", "&&", "node", "clientMock/subscriber1.js" ]

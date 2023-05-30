@@ -1,0 +1,25 @@
+
+services:
+  api:
+    build: .
+    ports:
+      - 3000:3000
+    depends_on:
+      - redis
+      - mongodb
+    links:
+      - redis
+      - mongodb
+    environment:
+      - MONGO_URL=mongodb
+      - REDIS_URL=redis
+  redis:
+    image: "redis:7.2-rc-alpine"
+    ports:
+      - 6379
+  mongodb:
+    image: "mongo:latest"
+    ports:
+      - 27017
+    environment:
+      - MONGO_URL=mongodb
